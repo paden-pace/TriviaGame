@@ -1,4 +1,16 @@
 
+//IDEAS:
+
+// create a function that runs at the begining of each game caled game()
+	// this might be useful for reseting to just end the function game
+
+// add a for loop to loop through all the questions
+
+//
+
+
+
+
 $(document).ready(function(){
 
 	console.log("page opens")
@@ -209,13 +221,13 @@ $(document).ready(function(){
 		}
 
 			// Creating the 30 second question timer call name startTime30();
-			var time30;
+			var time30 =31;
 			var timesUp30 = false;
 
 			function startTime30(){
 				console.log("startTime30 at least starts")
 				time30 = 31;
-				var timesUp5 = false;
+				var timesUp30 = false;
 				intervalId30 = setInterval(displayTime30, 1000);
 				displayTime30();
 			};
@@ -239,7 +251,7 @@ $(document).ready(function(){
 
 		 
 			// Creating the 5 second answerPage timer call name startTime5();
-			var time5;
+			var time5 = 6;
 			var timesUp5 = false;
 
 			function startTime5(){
@@ -314,13 +326,13 @@ $(document).ready(function(){
 
 		 // nextQuestion function should bring about the next function if time runs out
 		function displayQuestion() {
+			startTime30();	
 			$("#question").html(eachone[count].question);
 			$("#option1").html(eachone[count].option1.answer);
 			$("#option2").html(eachone[count].option2.answer);
 			$("#option3").html(eachone[count].option3.answer);
 			$("#option4").html(eachone[count].option4.answer);
 			$("#okButton").html("");
-			startTime30();	
 		};
 
 
@@ -443,10 +455,10 @@ $(document).ready(function(){
 
 
 
-		
+			debugger;
 			console.log(eachone.length);
 			displayQuestion();
-		
+
 			$("#option1").on("click", function(){
 				trueOrFalse1();
 				timesUpFunc30();
