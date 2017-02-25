@@ -8,6 +8,10 @@
 	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">></script>
 
 	 <script type="text/javascript" src="assets/javascript/app.js" ></script>
+
+	 <style>
+		@import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
+	</style>
 	
 	<!-- Reset CSS Link -->
 	 <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
@@ -25,41 +29,61 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-9 total">
-				<div class="row row-title">
+				<div class="row row-header">
 					<div class="col-md-12">
-						<div class="title">
-							<h1>Trivia of the Golden Age of DCOMs</h1>
+						<div class="row row-title">
+							<div class="title">
+								<h1>Trivia of the Golden Age of DCOMs</h1>
+							</div>
+							<div class="subtitle">
+								<h3>(Disney Channel Original Movies from 1997-2007)</h3>
+							</div>
 						</div>
-						<div class="subtitle">
-							<h4>(Disney Channel Original Movies from 1997-2007)</h4>
-						</div>
-						<div class="text-center">
-					    	<button id="start-button" class="btn btn-primary btn-lg">Start!</button>
-					    </div>
 					</div>
 				</div>
-				
-				<div class="row row-timer" id="row-timer">
-					<p>This is where the timer will go.</p>
+
+				<div class="row row-button-timer">
+					<div class="text-center col col-md-6 col-button" id="col-button">
+						<button id="start-button" class="btn btn-primary btn-lg">Start!</button>
+					</div>
+					<div class="col col-md-6 col-timer" id="col-timer">
+						<p>This is where the timer will go.</p>
+					</div>
 				</div>
+
 				<div id="qAndA">
 					<div class="row row-question" id="question">
-						<p>Question, Question, Question...</p>
+						<h4>Question, Question, Question...</h4>
 					</div>
 
 					<div class="row">
 						<div class="col-md-12 col-options">
-							<div class="row option" id="option1">
-								<p>This will be Option 1</p>
+							<div class="row option-row" id="optionA">
+								<div class="col-md-6 option" id="optionLg1">
+									<div class="singleOption" id="option1">
+										<p>This will be Option 1</p>
+									</div>
+								</div>
+								<div class="col-md-6 option" id="optionLg2">
+									<div class="singleOption" id="option2">
+										<p>This will be Option 2</p>
+									</div>
+								</div>	
 							</div>
-							<div class="row option" id="option2">
-								<p>This will be Option 2</p>
+							<div class="row option-row" id="optionB">
+								<div class="col-md-6 option" id="optionLg3">
+									<div class="singleOption" id="option3">
+										<p>This will be Option 3</p>
+									</div>
+								</div>
+								<div class="col-md-6 option" id="optionLg4">
+									<div class="singleOption" id="option4">
+										<p>This will be Option 4</p>
+									</div>
+								</div>
 							</div>
-							<div class="row option" id="option3">
-								<p>This will be Option 3</p>
-							</div>
-							<div class="row option" id="option4">
-								<p>This will be Option 4</p>
+							<div class="row answerLocation" id="answerLocation">
+								<p>
 							</div>
 							<div class="row gifLocation" id="gifLocation">
 								<p></p>

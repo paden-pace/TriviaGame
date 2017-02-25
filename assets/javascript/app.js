@@ -193,13 +193,19 @@ $(document).ready(function(){
 		// the variable to pass through the object array starts at 0
 		var count = 0;
 
+		var correct1 = false;
+		var correct2 = false;
+		var correct3 = false;
+		var correct4 = false;
+
 		function restart() {
+			clearInterval(intervalId30);
+			clearInterval(intervalId5);
 			console.log("restarting...");
-			var correctAnswers = 0;
-			var incorrectAnswers = 0;
-			var unansweredAnswers = 0;
-			var count = 0;
-			return false;
+			correctAnswers = 0;
+			incorrectAnswers = 0;
+			unansweredAnswers = 0;
+			count = 0;
 		}
 
 			// Creating the 30 second question timer call name startTime30();
@@ -208,7 +214,7 @@ $(document).ready(function(){
 
 			function startTime30(){
 				console.log("startTime30 at least starts")
-				time30 = 16;
+				time30 = 31;
 				var timesUp5 = false;
 				intervalId30 = setInterval(displayTime30, 1000);
 				displayTime30();
@@ -217,9 +223,9 @@ $(document).ready(function(){
 			function displayTime30(){
 				time30--;
 				if (time30 > 0){
-					$("#row-timer").html(time30 + " seconds left");
+					$("#col-timer").html(time30 + " seconds left");
 				} else {
-					$("#row-timer").html("Times Up!")
+					$("#col-timer").html("Times Up!")
 					unansweredAnswers++;
 					timesUpFunc30();
 				}
@@ -227,7 +233,7 @@ $(document).ready(function(){
 
 			function timesUpFunc30(){
 				clearInterval(intervalId30);
-				time30 = 11;
+				time30 = 31;
 				answerPage();
 			};
 
@@ -247,9 +253,9 @@ $(document).ready(function(){
 			function displayTime5(){
 				time5--;
 				if (time5 > 0){
-					$("#row-timer").html(time5 + " seconds left");
+					$("#col-timer").html(time5 + " seconds left");
 				} else {
-					$("#row-timer").html("");
+					$("#col-timer").html("");
 					timesUpFunc5();
 				}
 			};
@@ -372,19 +378,30 @@ $(document).ready(function(){
 			} else if (guessedIt == false) {
 				$("#question").html("Incorrect! The correct answer was: ");
 			};
-			if(eachone[count].option1.truth == false) {
-				$("#option1").html("");
+			if(eachone[count].option1.truth == true) {
+				$('#option1').addClass("correct");
+				correct1 = true;
 			};
-			if(eachone[count].option2.truth == false) {
-				$("#option2").html("");
+			if(eachone[count].option2.truth == true) {
+				$("#option2").addClass("correct");
+				correct2 = true;
 			};
-			if(eachone[count].option3.truth == false) {
-				$("#option3").html("");
+			if(eachone[count].option3.truth == true) {
+				$("#option3").addClass("correct");
+				correct3 = true;
 			};
-			if(eachone[count].option4.truth == false) {
-				$("#option4").html("");
+			if(eachone[count].option4.truth == true) {
+				$("#option4").addClass("correct");
+				correct4 = true;
 			};
+			// $("#option1").html("");
+			// $("#option2").html("");
+			// $("#option3").html("");
+			// $("#option4").html("");
+			
 			$("#gifLocation").html(eachone[count].gif);
+			$("#gifLocation").addClass("gif-here");
+			// $("#gifLocation").append('<img>' eachone[count].gif '</img>');
 			// $("#okButton").html("Next Question");
 			// $("#okButton").on("click", function(){
 				startTime5();	
@@ -392,10 +409,30 @@ $(document).ready(function(){
 
 		}
 
+		function correctReset () {
+			if (correct1 == true){
+				$("#option1").removeClass("correct");
+			};
+			if (correct2 == true){
+				$("#option2").removeClass("correct");
+			};
+			if (correct3 == true){
+				$("#option3").removeClass("correct");
+			};
+			if (correct4 == true){
+				$("#option4").removeClass("correct");
+			};
+
+		};
+
+
 		function nextQuestion() {
+			correctReset ();
 			console.log("count: " + count);
+			$("#answerLocation").html("");
 			count++;
 			$("#gifLocation").html("");
+			$("#gifLocation").removeClass("gif-here");
 			console.log("CA: " + correctAnswers + " IA: " + incorrectAnswers + " UA: " + unansweredAnswers);
 			if (count === eachone.length) {
 				finalPage();
@@ -406,7 +443,7 @@ $(document).ready(function(){
 
 
 
-
+		
 			console.log(eachone.length);
 			displayQuestion();
 		
@@ -430,6 +467,7 @@ $(document).ready(function(){
 			// if (timesUp5 == true){
 			// 	alert(timesUp5);
 			// };
+			$("#start-button").on("click", restart());
 
 	});
 
