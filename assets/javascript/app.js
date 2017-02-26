@@ -15,6 +15,11 @@ $(document).ready(function(){
 
 	console.log("page opens")
 	$("#reset-button").hide();
+	$("#option1").hide();
+	$("#option2").hide();
+	$("#option3").hide();
+	$("#option4").hide();
+
 
 
 	var eachone = [	
@@ -197,6 +202,10 @@ $(document).ready(function(){
 
 		console.log(eachone);
 		$("#option4").removeClass("last");
+		$("#option1").show();
+		$("#option2").show();
+		$("#option3").show();
+		$("#option4").show();
 
 		// $("#reset-button").addClass("last");
 
@@ -231,12 +240,12 @@ $(document).ready(function(){
 		}
 
 			// Creating the 30 second question timer call name startTime30();
-			var time30 =31;
+			var time30 =21;
 			var timesUp30 = false;
 
 			function timesUpFunc30(){
 				clearInterval(intervalId30);
-				time30 = 31;
+				time30 = 21;
 				answerPage();
 			};
 
@@ -255,7 +264,7 @@ $(document).ready(function(){
 			function startTime30(){
 				// debugger;
 				console.log("startTime30 at least starts")
-				time30 = 31;
+				time30 = 21;
 				var timesUp30 = false;
 				intervalId30 = setInterval(displayTime30, 1000);
 				displayTime30();
@@ -263,12 +272,12 @@ $(document).ready(function(){
 
 		 
 			// Creating the 5 second answerPage timer call name startTime5();
-			var time5 = 3;
+			var time5 = 6;
 			var timesUp5 = false;
 
 			function startTime5(){
 				console.log("startTime5 at least starts")
-				time5 = 3;
+				time5 = 6;
 				var timesUp5 = false;
 				intervalId5 = setInterval(displayTime5, 1000);
 				displayTime5();
@@ -286,7 +295,7 @@ $(document).ready(function(){
 
 			function timesUpFunc5(){
 				clearInterval(intervalId5);
-				time5 = 3;
+				time5 = 6;
 				nextQuestion();
 			};
 		
