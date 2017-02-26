@@ -48,6 +48,7 @@ h4{
 
 #start-button {
 	font-family: "Permanent Marker", cursive;
+	width: 50%;
 	font-size: 28px;
 	color: #000000;
 	background-color: #ffffff;
@@ -159,7 +160,29 @@ h4{
 	border-width: 5px;
 }
 
+.last {
+	font-family: monospace;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 5px 0 0 0;
+	border-color: transparent;
+	border-style: solid;
+	border-width: 2px;
+	background-color: transparent;
+	color: transparent;
+}
 
+.button-during {
+	font-family: monospace;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 5px 0 0 0;
+	border-color: transparent;
+	border-style: solid;
+	border-width: 2px;
+	background-color: transparent;
+	color: transparent;
+}
 
 
 

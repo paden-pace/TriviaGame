@@ -195,6 +195,9 @@ $(document).ready(function(){
 	$("#start-button").on("click", function(){
 
 		console.log(eachone);
+		$("#option4").removeClass("last");
+		$("#start-button").addClass("button-during");
+		$( "div" ).remove( "#start-button" );
 
 		// reseting and stating all the variables used
 		var correctAnswers = 0;
@@ -224,7 +227,26 @@ $(document).ready(function(){
 			var time30 =31;
 			var timesUp30 = false;
 
+			function timesUpFunc30(){
+				clearInterval(intervalId30);
+				time30 = 31;
+				answerPage();
+			};
+
+			function displayTime30(){
+				time30--;
+				if (time30 > 0){
+					$("#start-button").html(time30 + " seconds left");
+				} else {
+					$("#start-button").html("Times Up!")
+					unansweredAnswers++;
+					timesUpFunc30();
+				}
+			};
+
+			
 			function startTime30(){
+				debugger;
 				console.log("startTime30 at least starts")
 				time30 = 31;
 				var timesUp30 = false;
@@ -232,31 +254,14 @@ $(document).ready(function(){
 				displayTime30();
 			};
 
-			function displayTime30(){
-				time30--;
-				if (time30 > 0){
-					$("#col-timer").html(time30 + " seconds left");
-				} else {
-					$("#col-timer").html("Times Up!")
-					unansweredAnswers++;
-					timesUpFunc30();
-				}
-			};
-
-			function timesUpFunc30(){
-				clearInterval(intervalId30);
-				time30 = 31;
-				answerPage();
-			};
-
 		 
 			// Creating the 5 second answerPage timer call name startTime5();
-			var time5 = 6;
+			var time5 = 3;
 			var timesUp5 = false;
 
 			function startTime5(){
 				console.log("startTime5 at least starts")
-				time5 = 6;
+				time5 = 3;
 				var timesUp5 = false;
 				intervalId5 = setInterval(displayTime5, 1000);
 				displayTime5();
@@ -265,16 +270,16 @@ $(document).ready(function(){
 			function displayTime5(){
 				time5--;
 				if (time5 > 0){
-					$("#col-timer").html(time5 + " seconds left");
+					$("#start-button").html(time5 + " seconds left");
 				} else {
-					$("#col-timer").html("");
+					$("#start-button").html("");
 					timesUpFunc5();
 				}
 			};
 
 			function timesUpFunc5(){
 				clearInterval(intervalId5);
-				time5 = 6;
+				time5 = 3;
 				nextQuestion();
 			};
 		
@@ -344,6 +349,9 @@ $(document).ready(function(){
 			$("#option2").html("Incorrect Answers: " + incorrectAnswers);
 			$("#option3").html("Unanswered Answers: " + unansweredAnswers);
 			$("#option4").html("");
+			$("#option4").addClass("last");
+			$("#start-button").removeClass("button-during");
+			$("#start-button").addId("start-button");
 			count = 0;
 			correctAnswers = 0;
 			incorrectAnswers = 0;
@@ -479,7 +487,8 @@ $(document).ready(function(){
 			// if (timesUp5 == true){
 			// 	alert(timesUp5);
 			// };
-			$("#start-button").on("click", restart());
+
+			
 
 	});
 
