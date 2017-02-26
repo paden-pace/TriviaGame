@@ -14,6 +14,7 @@
 $(document).ready(function(){
 
 	console.log("page opens")
+	$("#reset-button").hide();
 
 
 	var eachone = [	
@@ -196,8 +197,8 @@ $(document).ready(function(){
 
 		console.log(eachone);
 		$("#option4").removeClass("last");
-		$("#start-button").addClass("button-during");
-		$( "div" ).remove( "#start-button" );
+
+		// $("#reset-button").addClass("last");
 
 		// reseting and stating all the variables used
 		var correctAnswers = 0;
@@ -217,10 +218,16 @@ $(document).ready(function(){
 			clearInterval(intervalId30);
 			clearInterval(intervalId5);
 			console.log("restarting...");
+			$("#option4").removeClass("last");
+			$("#reset-button").hide();
 			correctAnswers = 0;
 			incorrectAnswers = 0;
 			unansweredAnswers = 0;
 			count = 0;
+			correct1 = false;
+			correct2 = false;
+			correct3 = false;
+			correct4 = false;
 		}
 
 			// Creating the 30 second question timer call name startTime30();
@@ -246,7 +253,7 @@ $(document).ready(function(){
 
 			
 			function startTime30(){
-				debugger;
+				// debugger;
 				console.log("startTime30 at least starts")
 				time30 = 31;
 				var timesUp30 = false;
@@ -343,15 +350,15 @@ $(document).ready(function(){
 
 
 		function finalPage() {
-			$("#start-button").html("Restart?");
+			$("#start-button").html("Great Job!");
 			$("#question").html("Let's see how you did!");
 			$("#option1").html("Correct Answers: " + correctAnswers);
 			$("#option2").html("Incorrect Answers: " + incorrectAnswers);
 			$("#option3").html("Unanswered Answers: " + unansweredAnswers);
 			$("#option4").html("");
 			$("#option4").addClass("last");
-			$("#start-button").removeClass("button-during");
-			$("#start-button").addId("start-button");
+			$("#reset-button").show();
+			$("#reset-button").removeClass("last");
 			count = 0;
 			correctAnswers = 0;
 			incorrectAnswers = 0;
@@ -454,41 +461,68 @@ $(document).ready(function(){
 			$("#gifLocation").html("");
 			$("#gifLocation").removeClass("gif-here");
 			console.log("CA: " + correctAnswers + " IA: " + incorrectAnswers + " UA: " + unansweredAnswers);
-			if (count === eachone.length) {
-				finalPage();
-			} else {
+			if (count < eachone.length) {
 				displayQuestion();
-				};
+				} else if (count == eachone.length){
+				debugger;
+				finalPage();
+			};
+		};
+
+
+			// for (var i = 0; i < eachone.length; i++) {
+				
+			if (count < eachone.length) {
+				console.log(eachone.length);
+				displayQuestion();
+
+				$("#option1").on("click", function(){
+					trueOrFalse1();
+					timesUpFunc30();
+				});
+				$("#option2").on("click", function(){
+					trueOrFalse2();
+					timesUpFunc30();
+				});
+				$("#option3").on("click", function(){
+					trueOrFalse3();
+					timesUpFunc30();
+				});
+				$("#option4").on("click", function(){
+					trueOrFalse4();
+					timesUpFunc30();
+				});
+
 			};
 
+			$("#reset-button").on("click", function(){
+				restart();
+				displayQuestion();
+			// 	if (count < eachone.length) {
+			// 	console.log(eachone.length);
+			// 	displayQuestion();
 
-
-			debugger;
-			console.log(eachone.length);
-			displayQuestion();
-
-			$("#option1").on("click", function(){
-				trueOrFalse1();
-				timesUpFunc30();
-			});
-			$("#option2").on("click", function(){
-				trueOrFalse2();
-				timesUpFunc30();
-			});
-			$("#option3").on("click", function(){
-				trueOrFalse3();
-				timesUpFunc30();
-			});
-			$("#option4").on("click", function(){
-				trueOrFalse4();
-				timesUpFunc30();
-			});
-
-			// if (timesUp5 == true){
-			// 	alert(timesUp5);
+			// 	$("#option1").on("click", function(){
+			// 		trueOrFalse1();
+			// 		timesUpFunc30();
+			// 	});
+			// 	$("#option2").on("click", function(){
+			// 		trueOrFalse2();
+			// 		timesUpFunc30();
+			// 	});
+			// 	$("#option3").on("click", function(){
+			// 		trueOrFalse3();
+			// 		timesUpFunc30();
+			// 	});
+			// 	$("#option4").on("click", function(){
+			// 		trueOrFalse4();
+			// 		timesUpFunc30();
+			// 	});
 			// };
 
-			
+			});
+
+		
 
 	});
 
